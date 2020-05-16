@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper,twoside]{book}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{array, tabularx, multirow, booktabs} % Amélioration de l'environnement tabular, calculer automatiquement la taille des colonnes et permettre la fusion de ligne et facilite la production de tables telles qu’elles apparaissent (devraient apparaître) dans les livres et journaux scientifiques publiés
+\usepackage{graphicx}
+\usepackage{eurosym}
+\usepackage{chemist}
+\usepackage{enumitem}
+\usepackage{xspace}
+% à passer en dernier
+\usepackage[french]{babel}
+\usepackage{hyperref}
+
+\author{%
+Me Xavier \nom{Badin}\\%
+Maître de Conférences de l’Université Panthéon-Assas Paris \II
+}
+\title{%
+Droit Fiscal Immobilier \\
+Master 2 << Droit immobilier et de la construction >>}
+\date{2020}
+
+\hypersetup{%
+%	pdfinfo={%
+%		Title={Droit de l'Urbanisme et de l'Aménagement}%
+%		, Subject={}%Marché \@ReferenceMarche}%
+%		, Author={Samuel Déom}%
+%		%, Keywords={}%\@ReferenceMarche}%
+%	}%
+	, colorlinks = true% colore, plutot qu'encadre, les liens hypertexte
+	, linkcolor = black% colore les liens internes en noir
+	, urlcolor = black% colore les liens externes en noir
+	, breaklinks = true% autorise les liens à être étendus sur plusieurs lignes
+}
+
+\newcommand*{\nom}[1]{\textsc{#1}}
+\newcommand*{\pourcent}[1]{\nombre{#1}~\%}
+\newcommand*{\montant}[1]{\mbox{\nombre{#1}~\euro}}
+\newcommand*{\milliard}[1]{\mbox{\nombre{#1}~M~\euro}}
+\newcommand*{\articleCGI}[1]{article~#1 du \CGI\xspace}
+\newcommand*{\surface}[1]{\nombre{#1}~\metreCarre}
+
+% Sans arguments
+\newcommand*{\II}{\textsc{ii}\xspace}
+\newcommand*{\etc}{\emph{etc}.\xspace}
+\newcommand*{\tva}{TVA\xspace}
+\newcommand*{\cgi}{Code général des impôts\xspace}
+\newcommand*{\CGI}{CGI\xspace}
+\newcommand*{\metreCarre}{m\up{2}}
+\newcommand*{\dmto}{droits de mutation à titre onéreux\xspace}
+\newcommand*{\bofip}{BOFIP\xspace}
+
+% Environnement
+\newenvironment*{exemple}{Par exemple : \newline\itshape}{}
+\newenvironment*{enonce}{\itshape}{}
+
+\begin{document}
+
+	\maketitle
+	
+	\input{0_1_intro}
+	
+	\part{La fiscalité de la construction de l’immeuble}
+		
+		\include{1_1_tvaImmo}
+		\include{1_2_redevanceArcheoPreventive}
+		\include{1_3_urbanisme}
+	
+	\part{La fiscalité de la conservation  de l’immeuble}
+	
+		\include{2_1_taxesFoncieres}
+		\include{2_2_revenusFonciers}
+		\include{2_3_revenusLocatifs}
+		\include{2_4_taxeAnnuelleBureau}
+		\include{2_5_taxeAdditionnelleParking}
+		\include{2_6_taxeLogementsvacants}
+		
+	\part{La fiscalité de la cession  de l’immeuble}
+	
+		\include{3_1_plusValuesPrivees}
+		\include{3_2_taxeCessionsTerrainsDevenusConstructibles}
+		
+	\tableofcontents
+	
+\end{document}
