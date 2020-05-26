@@ -35,6 +35,53 @@ Master 2 << Droit immobilier et de la construction >>}
 	, breaklinks = true% autorise les liens à être étendus sur plusieurs lignes
 }
 
+% Ecrire du texte juridique
+\makeatletter
+\newcommand*{\assPlen}{\@ifstar{\mbox{ass. plén.}\xspace}{assemblée plénière\xspace}}
+\newcommand*{\civUn}{\@ifstar{civ. 1\iere{}\xspace}{première chambre civile\xspace}}
+\newcommand*{\civDeux}{\@ifstar{civ. 2\ieme{}\xspace}{deuxième chambre civile\xspace}}
+\newcommand*{\civTrois}{\@ifstar{civ. 3\ieme{}\xspace}{troisième chambre civile\xspace}}
+\newcommand*{\CourDeCas}{\@ifstar{Cass.\xspace}{Cour de Cassation\xspace}}
+\newcommand*{\CA}{\@ifstar{CA\xspace}{Cour d'Appel\xspace}}
+\newcommand*{\CAA}{\@ifstar{CAA\xspace}{Cour Administrative d'Appel\xspace}}
+\newcommand*{\CE}{\@ifstar{CE\xspace}{Conseil d'État\xspace}}
+\makeatother
+
+\newcommand*{\jurisCourDeCas}[3][]{\CourDeCas* #2, \printdate{#3}\ifthenelse{\equal{#1}{}}{}{, \no#1}}% Numéro de chambre, date et en option no de pourvoi
+\newcommand*{\jurisCE}[2][]{\CE*, \printdate{#2}\ifthenelse{\equal{#1}{}}{}{, \no#1}}%Date et en option no de pourvoi
+\newcommand*{\jurisCA}[2]{\CA* #1, \printdate{#2}}%Ville, date
+\newcommand*{\jurisCAA}[3][]{\CAA* #2, \printdate{#3}\ifthenelse{\equal{#1}{}}{}{, \no#1}}%Ville, date, et en option no de pourvoi
+
+\newcommand*{\refArticle}[2]{\mbox{#1.\,#2}}
+\makeatletter
+\newcommand*{\articleCodifie}{\@ifstar{\articleCodifieStared}{\articleCodifieNotStared}}
+\newcommand*{\articleCodifieStared}[2]{\mbox{art.~\refArticle{#1}{#2}}}
+\newcommand*{\articleCodifieNotStared}[2]{\mbox{article~\refArticle{#1}{#2}}}
+\makeatother
+\newcommand*{\articlesCodifies}[2]{\mbox{articles~\refArticle{#1}{#2}}}
+\newcommand*{\ArticleCodifie}[2]{\mbox{Article~\refArticle{#1}{#2}}}
+\newcommand*{\ArticlesCodifies}[2]{\mbox{Articles~\refArticle{#1}{#2}}}
+\newcommand*{\articlesCodifiesEtSuivants}[2]{\articlesCodifies{#1}{#2} et suivants}
+\newcommand*{\articleDu}[3][]{\ifthenelse{\equal{#1}{}}{\mbox{article~#2}}{\articleCodifie{#1}{#2}} du #3}
+\newcommand*{\articlesDu}[3][]{\ifthenelse{\equal{#1}{}}{\mbox{articles~#2}}{\articlesCodifies{#1}{#2}} du #3}
+\newcommand*{\articlesDuEtSuivants}[3][]{\ifthenelse{\equal{#1}{}}{\mbox{articles~#2}}{\articlesCodifies{#1}{#2}} et suivants du #3}
+\newcommand*{\ArticleDu}[3][]{\ifthenelse{\equal{#1}{}}{\mbox{Article~#2}}{\ArticleCodifie{#1}{#2}} du #3}
+\newcommand*{\ArticlesDu}[3][]{\ifthenelse{\equal{#1}{}}{\mbox{Articles~#2}}{\ArticlesCodifies{#1}{#2}} du #3}
+\newcommand*{\ArticlesDuEtSuivants}[3][]{\ifthenelse{\equal{#1}{}}{\mbox{Articles~#2}}{\ArticlesCodifies{#1}{#2}} et suivants du #3}
+
+% Les codes et leur abbréviation (tiré de )
+\makeatletter
+\newcommand*{\ca}{\@ifstar{\mbox{C.~assur.}\xspace}{Code des assurances\xspace}}
+\newcommand*{\cch}{\@ifstar{CCH\xspace}{Code de la construction et de l'habitation\xspace}}
+\newcommand*{\cciv}{\@ifstar{\mbox{C.~civ.}\xspace}{Code civil\xspace}}
+\newcommand*{\ccom}{\@ifstar{\mbox{	C.~com.}\xspace}{Code du commerce\xspace}}
+\newcommand*{\ccons}{\@ifstar{\mbox{C.~consom.}\xspace}{Code de la consommation\xspace}}
+\newcommand*{\ccp}{\@ifstar{CCP\xspace}{Code de la commande publique\xspace}}
+\newcommand*{\cpc}{\@ifstar{CPC\xspace}{Code de procédure civile\xspace}}
+\newcommand*{\cpi}{\@ifstar{CPI\xspace}{Code de la propriété intellectuelle\xspace}}
+\newcommand*{\cu}{\@ifstar{\mbox{C.~urb.}\xspace}{Code de l'urbanisme\xspace}}
+\makeatother
+
 \newcommand*{\nom}[1]{\textsc{#1}}
 \newcommand*{\pourcent}[1]{\nombre{#1}~\%}
 \newcommand*{\montant}[1]{\mbox{\nombre{#1}~\euro}}
@@ -59,29 +106,29 @@ Master 2 << Droit immobilier et de la construction >>}
 \begin{document}
 
 	\maketitle
-	
+
 	\input{0_1_intro}
-	
+
 	\part{La fiscalité de la construction de l’immeuble}
-		
+
 		\include{1_1_tvaImmo}
 		\include{1_2_redevanceArcheoPreventive}
 		\include{1_3_urbanisme}
-	
+
 	\part{La fiscalité de la conservation  de l’immeuble}
-	
+
 		\include{2_1_taxesFoncieres}
 		\include{2_2_revenusFonciers}
 		\include{2_3_revenusLocatifs}
 		\include{2_4_taxeAnnuelleBureau}
 		\include{2_5_taxeAdditionnelleParking}
 		\include{2_6_taxeLogementsvacants}
-		
+
 	\part{La fiscalité de la cession  de l’immeuble}
-	
+
 		\include{3_1_plusValuesPrivees}
 		\include{3_2_taxeCessionsTerrainsDevenusConstructibles}
-		
+
 	\tableofcontents
-	
+
 \end{document}
