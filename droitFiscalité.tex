@@ -77,6 +77,7 @@ Master 2 << Droit immobilier et de la construction >>}
 \newcommand*{\ccom}{\@ifstar{\mbox{	C.~com.}\xspace}{Code du commerce\xspace}}
 \newcommand*{\ccons}{\@ifstar{\mbox{C.~consom.}\xspace}{Code de la consommation\xspace}}
 \newcommand*{\ccp}{\@ifstar{CCP\xspace}{Code de la commande publique\xspace}}
+\newcommand*{\cgi}{\@ifstar{CGI\xspace}{Code général des impôts\xspace}}
 \newcommand*{\cpc}{\@ifstar{CPC\xspace}{Code de procédure civile\xspace}}
 \newcommand*{\cpi}{\@ifstar{CPI\xspace}{Code de la propriété intellectuelle\xspace}}
 \newcommand*{\cu}{\@ifstar{\mbox{C.~urb.}\xspace}{Code de l'urbanisme\xspace}}
@@ -90,18 +91,24 @@ Master 2 << Droit immobilier et de la construction >>}
 \newcommand*{\surface}[1]{\nombre{#1}~\metreCarre}
 
 % Sans arguments
+\makeatletter
+\newcommand*{\colloc}{\@ifstar{collectivité locale}{collectivités locales}\xspace}
+\makeatother
 \newcommand*{\II}{\textsc{ii}\xspace}
 \newcommand*{\etc}{\emph{etc}.\xspace}
 \newcommand*{\tva}{TVA\xspace}
-\newcommand*{\cgi}{Code général des impôts\xspace}
-\newcommand*{\CGI}{CGI\xspace}
 \newcommand*{\metreCarre}{m\up{2}}
 \newcommand*{\dmto}{droits de mutation à titre onéreux\xspace}
 \newcommand*{\bofip}{BOFIP\xspace}
 
 % Environnement
-\newenvironment*{exemple}{Par exemple : \newline\itshape}{}
+\newenvironment*{exemple}{Par exemple :\newline\itshape}{}
 \newenvironment*{enonce}{\itshape}{}
+\newenvironment*{conseil}{{\bfseries Conseil :}\smallbreak\itshape}{}
+\newenvironment*{casPratique}[1]%
+{{\bfseries Cas pratique \no}
+{\itshape #1}}%
+{}
 
 \begin{document}
 
